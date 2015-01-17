@@ -12,6 +12,7 @@ import br.com.thiagomv.damasCode.estruturas.Jogada;
 import br.com.thiagomv.damasCode.estruturas.MovimentoSimples;
 import br.com.thiagomv.damasCode.estruturas.PosicaoTabuleiro;
 import br.com.thiagomv.damasCode.estruturas.Tabuleiro;
+import br.com.thiagomv.damasCode.ia.Utils;
 
 /**
  * Esta classe implementa todas as regras que definem quais jogadas podem ser
@@ -509,5 +510,18 @@ public class Regras {
 	 */
 	public boolean isJogadaPermitida(final Jogada jogada) {
 		return this.jogadasPermitidas.contains(jogada);
+	}
+
+	/**
+	 * Calcula as jogadas permitidas a partir de um novo estado de jogo.
+	 * 
+	 * @param estadoJogo
+	 *            Estado de jogo a partir do qual as jogadas permitidas serão
+	 *            calculadas.
+	 * @return Cópia de nova lista de jogadas permitidas calculadas.
+	 */
+	public List<Jogada> calcularJogadasPermitidas(final EstadoJogo estadoJogo) {
+		atualizarRegras(estadoJogo);
+		return Utils.copiarJogadas(getJogadasPermitidas());
 	}
 }

@@ -28,7 +28,7 @@ public class MinimaxIA extends AbstractIA {
 		}
 
 		MemoriaController.contabilizarMemoria();
-		
+
 		return nodoInicial.getJogadaSucessoraAvaliandoMaiorNivelTerminal(valor);
 	}
 
@@ -60,9 +60,8 @@ public class MinimaxIA extends AbstractIA {
 				if (proximosNiveisSaoTerminais) {
 					novasJogadasPermitidas = null;
 				} else {
-					regras.atualizarRegras(novoEstado);
-					novasJogadasPermitidas = Utils.copiarJogadas(regras
-							.getJogadasPermitidas());
+					novasJogadasPermitidas = regras
+							.calcularJogadasPermitidas(novoEstado);
 				}
 
 				sucessor = new Nodo(novoEstado, novasJogadasPermitidas,
@@ -71,14 +70,14 @@ public class MinimaxIA extends AbstractIA {
 
 				utilidade = Math.max(utilidade,
 						valorMin(sucessor, proximaProfundidade));
-				
+
 				nodo.setNivelTerminal(Math.max(nodo.getNivelTerminal(),
 						1 + sucessor.getNivelTerminal()));
 			}
 		}
 
 		MemoriaController.contabilizarMemoria();
-		
+
 		nodo.setValor(utilidade);
 		return utilidade;
 	}
@@ -107,9 +106,8 @@ public class MinimaxIA extends AbstractIA {
 				if (proximosNiveisSaoTerminais) {
 					jogadasPermitidasNovas = null;
 				} else {
-					regras.atualizarRegras(novoEstado);
-					jogadasPermitidasNovas = Utils.copiarJogadas(regras
-							.getJogadasPermitidas());
+					jogadasPermitidasNovas = regras
+							.calcularJogadasPermitidas(novoEstado);
 				}
 
 				sucessor = new Nodo(novoEstado, jogadasPermitidasNovas,
@@ -118,14 +116,14 @@ public class MinimaxIA extends AbstractIA {
 
 				utilidade = Math.min(utilidade,
 						valorMax(sucessor, proximaProfundidade));
-				
+
 				nodo.setNivelTerminal(Math.max(nodo.getNivelTerminal(),
 						1 + sucessor.getNivelTerminal()));
 			}
 		}
 
 		MemoriaController.contabilizarMemoria();
-		
+
 		nodo.setValor(utilidade);
 		return utilidade;
 	}

@@ -94,9 +94,7 @@ public class RegrasTest {
 		verificarPosicoesIniciais();
 
 		regras = new Regras();
-		regras.atualizarRegras(estadoJogo);
-
-		jogadasPermitidas = regras.getJogadasPermitidas();
+		jogadasPermitidas = regras.calcularJogadasPermitidas(estadoJogo);
 		verificarJogadasPermitidasIniciais();
 	}
 
@@ -257,9 +255,7 @@ public class RegrasTest {
 				IndicadorPedraJogador.NORMAL_J1);
 
 		regras = new Regras();
-		regras.atualizarRegras(estadoJogo);
-
-		jogadasPermitidas = regras.getJogadasPermitidas();
+		jogadasPermitidas = regras.calcularJogadasPermitidas(estadoJogo);
 
 		Assert.assertThat(jogadasPermitidas.size(), CoreMatchers.is(2));
 
@@ -279,8 +275,7 @@ public class RegrasTest {
 		tabuleiro.setPedraJogador(new PosicaoTabuleiro(7, 3),
 				IndicadorPedraJogador.DAMA_J1);
 
-		regras.atualizarRegras(estadoJogo);
-		jogadasPermitidas = regras.getJogadasPermitidas();
+		jogadasPermitidas = regras.calcularJogadasPermitidas(estadoJogo);
 
 		Assert.assertThat(jogadasPermitidas.size(), CoreMatchers.is(7));
 
@@ -337,9 +332,7 @@ public class RegrasTest {
 				IndicadorPedraJogador.NORMAL_J1);
 
 		regras = new Regras();
-		regras.atualizarRegras(estadoJogo);
-
-		jogadasPermitidas = regras.getJogadasPermitidas();
+		jogadasPermitidas = regras.calcularJogadasPermitidas(estadoJogo);
 
 		Assert.assertThat(jogadasPermitidas.size(), CoreMatchers.is(12));
 
@@ -433,8 +426,7 @@ public class RegrasTest {
 				IndicadorPedraJogador.DAMA_J1);
 
 		regras = new Regras();
-		regras.atualizarRegras(estadoJogo);
-		jogadasPermitidas = regras.getJogadasPermitidas();
+		jogadasPermitidas = regras.calcularJogadasPermitidas(estadoJogo);
 
 		Assert.assertThat(jogadasPermitidas.size(), CoreMatchers.is(1));
 
@@ -451,8 +443,7 @@ public class RegrasTest {
 		tabuleiro.setPedraJogador(new PosicaoTabuleiro(5, 5),
 				IndicadorPedraJogador.NORMAL_J1);
 
-		regras.atualizarRegras(estadoJogo);
-		jogadasPermitidas = regras.getJogadasPermitidas();
+		jogadasPermitidas = regras.calcularJogadasPermitidas(estadoJogo);
 
 		Assert.assertThat(jogadasPermitidas.size(), CoreMatchers.is(8));
 
@@ -514,9 +505,7 @@ public class RegrasTest {
 				IndicadorPedraJogador.DAMA_J1);
 
 		regras = new Regras();
-		regras.atualizarRegras(estadoJogo);
-
-		jogadasPermitidas = regras.getJogadasPermitidas();
+		jogadasPermitidas = regras.calcularJogadasPermitidas(estadoJogo);
 
 		Assert.assertThat(jogadasPermitidas.size(), CoreMatchers.is(1));
 
@@ -546,9 +535,7 @@ public class RegrasTest {
 				IndicadorPedraJogador.NORMAL_J2);
 
 		regras = new Regras();
-		regras.atualizarRegras(estadoJogo);
-
-		jogadasPermitidas = regras.getJogadasPermitidas();
+		jogadasPermitidas = regras.calcularJogadasPermitidas(estadoJogo);
 
 		Assert.assertThat(jogadasPermitidas.size(), CoreMatchers.is(1));
 
@@ -586,9 +573,7 @@ public class RegrasTest {
 				IndicadorPedraJogador.DAMA_J2);
 
 		regras = new Regras();
-		regras.atualizarRegras(estadoJogo);
-
-		jogadasPermitidas = regras.getJogadasPermitidas();
+		jogadasPermitidas = regras.calcularJogadasPermitidas(estadoJogo);
 
 		Assert.assertThat(jogadasPermitidas.size(), CoreMatchers.is(1));
 
@@ -634,9 +619,7 @@ public class RegrasTest {
 				IndicadorPedraJogador.DAMA_J2);
 
 		regras = new Regras();
-		regras.atualizarRegras(estadoJogo);
-
-		jogadasPermitidas = regras.getJogadasPermitidas();
+		jogadasPermitidas = regras.calcularJogadasPermitidas(estadoJogo);
 
 		Assert.assertThat(jogadasPermitidas.size(), CoreMatchers.is(2));
 
@@ -710,9 +693,7 @@ public class RegrasTest {
 				IndicadorPedraJogador.DAMA_J2);
 
 		regras = new Regras();
-
-		regras.atualizarRegras(estadoJogo);
-		jogadasPermitidas = regras.getJogadasPermitidas();
+		jogadasPermitidas = regras.calcularJogadasPermitidas(estadoJogo);
 
 		Assert.assertThat(jogadasPermitidas.size(), CoreMatchers.is(1));
 

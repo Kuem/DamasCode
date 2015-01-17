@@ -30,7 +30,7 @@ public class AlfaBetaIA extends AbstractIA {
 		}
 
 		MemoriaController.contabilizarMemoria();
-		
+
 		return nodoInicial.getJogadaSucessoraAvaliandoMaiorNivelTerminal(valor);
 	}
 
@@ -62,9 +62,8 @@ public class AlfaBetaIA extends AbstractIA {
 				if (proximosNiveisSaoTerminais) {
 					novasJogadasPermitidas = null;
 				} else {
-					regras.atualizarRegras(novoEstado);
-					novasJogadasPermitidas = Utils.copiarJogadas(regras
-							.getJogadasPermitidas());
+					novasJogadasPermitidas = regras
+							.calcularJogadasPermitidas(novoEstado);
 				}
 
 				sucessor = new Nodo(novoEstado, novasJogadasPermitidas,
@@ -80,7 +79,7 @@ public class AlfaBetaIA extends AbstractIA {
 				if (utilidade > b) {
 
 					MemoriaController.contabilizarMemoria();
-					
+
 					nodo.setValor(utilidade);
 					return utilidade;
 				}
@@ -89,7 +88,7 @@ public class AlfaBetaIA extends AbstractIA {
 		}
 
 		MemoriaController.contabilizarMemoria();
-		
+
 		nodo.setValor(utilidade);
 		return utilidade;
 	}
@@ -118,9 +117,8 @@ public class AlfaBetaIA extends AbstractIA {
 				if (proximosNiveisSaoTerminais) {
 					jogadasPermitidasNovas = null;
 				} else {
-					regras.atualizarRegras(novoEstado);
-					jogadasPermitidasNovas = Utils.copiarJogadas(regras
-							.getJogadasPermitidas());
+					jogadasPermitidasNovas = regras
+							.calcularJogadasPermitidas(novoEstado);
 				}
 
 				sucessor = new Nodo(novoEstado, jogadasPermitidasNovas,
@@ -136,7 +134,7 @@ public class AlfaBetaIA extends AbstractIA {
 				if (utilidade < a) {
 
 					MemoriaController.contabilizarMemoria();
-					
+
 					nodo.setValor(utilidade);
 					return utilidade;
 				}
@@ -145,7 +143,7 @@ public class AlfaBetaIA extends AbstractIA {
 		}
 
 		MemoriaController.contabilizarMemoria();
-		
+
 		nodo.setValor(utilidade);
 		return utilidade;
 	}
